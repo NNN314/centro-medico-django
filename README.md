@@ -35,7 +35,7 @@ Este proyecto es una web para la gestión de un centro médico. Permite agregar 
    python manage.py makemigrations
    python manage.py migrate
 
-6. **Ejecutar el servidor de desarollo**  
+6. **Ejecutar el servidor de desarollo**   **pagina admin usuario:bosque contraseña:123**
    python manage.py runserver
 
 **Luego, abre tu navegador y visita http://127.0.0.1:8000/ para ver la aplicación en acción.**
