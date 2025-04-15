@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Inicio - Centro Médico{% endblock %}
+{% block content %}
+<h2>Listado de Doctores</h2>
+<ul>
+    {% for doctor in doctors %}
+        <li>{{ doctor.name }} - {{ doctor.specialty.name }}</li>
+    {% empty %}
+        <li>No hay doctores registrados.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

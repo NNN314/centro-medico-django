@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Centro Médico{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <h1>Centro Médico</h1>
+        <nav>
+            <a href="{% url 'home' %}">Inicio</a> |
+            <a href="{% url 'create_specialty' %}">Nueva Especialidad</a> |
+            <a href="{% url 'create_doctor' %}">Nuevo Doctor</a> |
+            <a href="{% url 'create_patient' %}">Nuevo Paciente</a>
+        </nav>
+    </header>
+    <hr>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+        <hr>
+        <p>© 2025 Centro Médico</p>
+    </footer>
+</body>
+</html>
