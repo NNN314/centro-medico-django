@@ -19,6 +19,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('gestion_medica.urls')),  # Aquí se incluye la app
+    path('', include('gestion_medica.urls')), 
 ]
 
