@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Listado de Doctores</h1>
+  {% if doctores %}
+    <ul>
+      {% for doctor in doctores %}
+        <li>
+          <a href="{% url 'doctor_detail' doctor.pk %}">
+            {{ doctor.nombre }} - {{ doctor.especialidad }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No se encontraron doctores. Por favor, <a href="{% url 'doctor_create' %}">crea uno</a>.</p>
+  {% endif %}
+{% endblock %}

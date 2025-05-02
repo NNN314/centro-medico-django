@@ -1,0 +1,111 @@
+/* Reset y configuración general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* Contenedor central */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Top bar */
+.top-bar {
+    background-color: #004d66;
+    color: #fff;
+    padding: 5px 0;
+}
+.top-bar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo {
+    display: flex;
+    align-items: center;
+}
+.logo img {
+    max-height: 40px;
+}
+.logo h1 {
+    margin-left: 10px;
+    font-size: 24px;
+}
+.contact-info span {
+    margin-left: 15px;
+    font-size: 14px;
+}
+
+/* Barra de Navegación */
+nav {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+nav .container ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+nav .container ul li {
+    margin: 0 15px;
+}
+nav .container ul li a {
+    text-decoration: none;
+    color: #333;
+    padding: 15px 0;
+    transition: color 0.3s ease;
+}
+nav .container ul li a:hover {
+    color: #004d66;
+}
+
+/* Sección Hero */
+.hero {
+    background: url('../images/hero-bg.jpg') no-repeat center center/cover;
+    color: #fff;
+    text-align: center;
+    padding: 100px 0;
+}
+.hero h2 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+.hero p {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+.hero .btn {
+    background-color: #ff6600;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+.hero .btn:hover {
+    background-color: #e65c00;
+}
+
+/* Sección Principal */
+main {
+    padding: 40px 0;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+

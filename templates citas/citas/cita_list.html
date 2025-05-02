@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Listado de Citas Médicas</h2>
+  {% if citas %}
+    <ul>
+      {% for cita in citas %}
+        <li>
+          <a href="{% url 'cita_detail' cita.pk %}">
+            {{ cita.paciente.username }} con Dr. {{ cita.doctor.nombre }} el {{ cita.fecha }} a las {{ cita.hora }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No hay citas registradas. <a href="{% url 'cita_create' %}">Agendar una cita</a></p>
+  {% endif %}
+  <a href="{% url 'cita_create' %}">Agendar nueva cita</a>
+{% endblock %}
+
+<!-- templates/citas/cita_list.html -->
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Listado de Citas Médicas</h2>
+  {% if citas %}
+    <ul>
+      {% for cita in citas %}
+        <li>
+          {{ cita.paciente.username }} con Dr. {{ cita.doctor.nombre }} el {{ cita.fecha }} a las {{ cita.hora }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No hay citas registradas</p>
+  {% endif %}
+  <a href="{% url 'cita_create' %}">Agendar nueva cita</a>
+{% endblock %}

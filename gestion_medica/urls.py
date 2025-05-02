@@ -7,3 +7,4 @@ urlpatterns = [
     path('nuevo-doctor/', create_doctor, name='create_doctor'),
     path('nuevo-paciente/', create_patient, name='create_patient'),
 ]
+

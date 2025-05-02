@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Detalle de la Cita</h2>
+  <p><strong>Paciente:</strong> {{ cita.paciente.username }}</p>
+  <p><strong>Doctor:</strong> Dr. {{ cita.doctor.nombre }}</p>
+  <p><strong>Fecha:</strong> {{ cita.fecha }}</p>
+  <p><strong>Hora:</strong> {{ cita.hora }}</p>
+  <p><strong>Mensaje:</strong> {{ cita.mensaje }}</p>
+  <a href="{% url 'cita_update' cita.pk %}">Editar</a>
+  <a href="{% url 'cita_delete' cita.pk %}">Eliminar</a>
+  <a href="{% url 'cita_list' %}">Volver al listado</a>
+{% endblock %}

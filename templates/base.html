@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Centro Médico</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Inicio</a></li>
+            <li><a href="{% url 'doctor_list' %}">Doctores</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'profile' %}">Perfil ({{ user.username }})</a></li>
+                <li><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Iniciar Sesión</a></li>
+                <li><a href="{% url 'register' %}">Registrarse</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <main>
+        {% block content %}
+        <!-- Puedes agregar contenido temporal para verificar -->
+        <p>Este es el contenido base</p>
+        {% endblock %}
+    </main>
+</body>
+</html>
+
+
+
+   <div style="padding: 20px; border: 1px solid red;">
+       sss
+   </div>
+
+

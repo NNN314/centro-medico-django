@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Detalle del Mensaje</h2>
+  <p>
+    <strong>Asunto:</strong> {{ mensaje.asunto }}
+  </p>
+  <p>
+    <strong>De:</strong> {{ mensaje.remitente.username }}
+  </p>
+  <p>
+    <strong>Para:</strong> {{ mensaje.destinatario.username }}
+  </p>
+  <p>
+    <strong>Enviado:</strong> {{ mensaje.creado|date:"d/m/Y H:i" }}
+  </p>
+  <hr>
+  <p>{{ mensaje.cuerpo }}</p>
+  <a href="{% url 'inbox' %}">Volver a la bandeja de entrada</a>
+{% endblock %}

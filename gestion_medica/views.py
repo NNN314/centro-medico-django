@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from pacientes.models import Doctor
 from .forms import SpecialtyForm, DoctorForm, PatientForm
 from .models import Doctor, Specialty, Patient
 
@@ -39,3 +40,18 @@ def create_patient(request):
     else:
         form = PatientForm()
     return render(request, 'create_patient.html', {'form': form})
+
+from django.shortcuts import render
+
+def home(request):
+    return render(request, "home.html")
+
+def about(request):
+    return render(request, "about.html")
+
+def home(request):
+    # Si deseas mostrar siempre el primer doctor (o algún doctor específico)
+    doctor = Doctor.objects.first()  # O ajusta la lógica según tu requerimiento
+    return render(request, 'gestion_medica/home.html', {'doctor': doctor})
+
+

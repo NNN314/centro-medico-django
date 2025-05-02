@@ -1,27 +1,84 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Centro Médico{% endblock %}</title>
+  <meta charset="UTF-8">
+  <title>Centro Médico</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <header>
-        <h1>Centro Médico</h1>
-        <nav>
-            <a href="{% url 'home' %}">Inicio</a> |
-            <a href="{% url 'create_specialty' %}">Nueva Especialidad</a> |
-            <a href="{% url 'create_doctor' %}">Nuevo Doctor</a> |
-            <a href="{% url 'create_patient' %}">Nuevo Paciente</a>
-        </nav>
-    </header>
-    <hr>
-    <main>
-        {% block content %}
-        {% endblock %}
-    </main>
-    <footer>
-        <hr>
-        <p>© 2025 Centro Médico</p>
-    </footer>
+  <nav>
+    <ul>
+      <li><a href="{% url 'home' %}">Inicio</a></li>
+      <li><a href="{% url 'doctor_list' %}">Doctores</a></li>
+    </ul>
+  </nav>
+  
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
 </body>
 </html>
+
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Listado de Doctores</h1>
+  {% if doctores %}
+    <ul>
+      {% for doctor in doctores %}
+        <li>
+          <a href="{% url 'doctor_detail' doctor.pk %}">{{ doctor.nombre }} - {{ doctor.especialidad }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No se encontraron doctores. Por favor, <a href="{% url 'doctor_create' %}">crea uno</a>.</p>
+  {% endif %}
+  <a href="{% url 'doctor_create' %}">Agregar Doctor</a>
+{% endblock %}
+
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>{{ doctor.nombre }} - {{ doctor.especialidad }}</h1>
+  <p>Email: {{ doctor.email }}</p>
+  <p>Teléfono: {{ doctor.telefono }}</p>
+
+  {% if doctor and doctor.pk %}
+    <a href="{% url 'doctor_update' pk=doctor.pk %}">Editar Doctor</a>
+{% endif %}
+
+  <a href="{% url 'doctor_update' pk=doctor.pk %}">Editar Doctor</a>
+  <a href="{% url 'doctor_delete' doctor.pk %}">Eliminar</a>
+  <a href="{% url 'doctor_list' %}">Volver al listado</a>
+  
+{% endblock %}
+
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>{% if form.instance.pk %}Editar Doctor{% else %}Nuevo Doctor{% endif %}</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar</button>
+  </form>
+  <a href="{% url 'doctor_list' %}">Cancelar</a>
+{% endblock %}
+
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Confirmar eliminación</h1>
+  <p>¿Estás seguro de que deseas eliminar a {{ object.nombre }}?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Sí, eliminar</button>
+    <a href="{% url 'doctor_detail' object.pk %}">Cancelar</a>
+  </form>
+{% endblock %}
+
+<p>Objeto doctor: {{ doctor }}</p>
+<p>Doctor PK: {{ doctor.pk }}</p>
